@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${#strings.isEmpty(mascota.id) ? 'Nueva Mascota' : 'Editar Mascota'}"></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1 th:text="${#strings.isEmpty(mascota.id) ? 'Nueva Mascota' : 'Editar Mascota'}"></h1>
+            <form th:action="@{/mascotas}" th:object="${mascota}" method="post">
+                <input type="hidden" th:field="*{id}" />
+                
+                <div class="row mb-3">
+                    <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required />
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <label for="edad" class="col-sm-2 col-form-label">Edad:</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" id="edad" th:field="*{edad}" required />
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <label for="especie" class="col-sm-2 col-form-label">Especie:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="especie" th:field="*{especie}" required />
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <label for="raza" class="col-sm-2 col-form-label">Raza:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="raza" th:field="*{raza}" required />
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </body>
+</html>
